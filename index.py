@@ -1,19 +1,29 @@
 from typing import List
 
 class Solution:
-    def removeElement(self, nums: List[int], val: int) -> int:
+    def majorityElement(self, nums: List[int]) -> int:
 
-        k = 0
-        for i in range(len(nums)):
-            if nums[i] != val:
-                nums[k] = nums[i]
-                k += 1
-        return k
+        candidate = None
+        count = 0
 
-if __name__ == "__main__":
-    solution = Solution()
-    nums = [3, 2, 2, 3]
-    val = 3
-    k = solution.removeElement(nums, val)
-    print(f"Length: {k}")
-    print(f"Modified nums: {nums[:k]}")
+        # Phase 1: Find a candidate
+        for num in nums:
+            if count == 0:
+                candidate = num
+            count += 1 if num == candidate else -1
+        return candidate
+
+# Instantiate the solution class
+solution = Solution()
+
+# Test cases
+test_cases = [
+    ([3, 2, 3], 3),  # Expected Output: 3
+    ([2, 2, 1, 1, 1, 2, 2], 2),  # Expected Output: 2
+    ([1], 1),  # Expected Output: 1
+]
+
+# Run the test cases
+for i, (nums, expected) in enumerate(test_cases, 1):
+    result = solution.majorityElement(nums)
+    print(f"Test Case {i}: {'Passed' if result == expected else 'Failed'}")
