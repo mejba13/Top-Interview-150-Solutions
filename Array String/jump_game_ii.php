@@ -9,7 +9,7 @@ class Solution {
         $farthest = 0;
 
         for ($i = 0; $i < count($nums) - 1; $i++) {
-             $farthest = max($farthest, $i + $nums[$i]);
+            $farthest = max($farthest, $i + $nums[$i]);
 
             if ($i == $currentEnd) {
                 $jumps++;
