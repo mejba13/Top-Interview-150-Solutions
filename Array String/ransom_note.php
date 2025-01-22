@@ -2,7 +2,7 @@
 
 class Solution {
     function canConstruct($ransomNote, $magazine) {
-         $letterCount = array_fill(0, 26, 0);
+        $letterCount = array_fill(0, 26, 0);
 
         for ($i = 0; $i < strlen($magazine); $i++) {
             $letterCount[ord($magazine[$i]) - ord('a')]++;
