@@ -1,30 +1,32 @@
 <?php
 
 class Solution {
-    function canConstruct($ransomNote, $magazine) {
-         $letterCount = array_fill(0, 26, 0);
 
-        for ($i = 0; $i < strlen($magazine); $i++) {
-            $letterCount[ord($magazine[$i]) - ord('a')]++;
-        }
-
-        for ($i = 0; $i < strlen($ransomNote); $i++) {
-            $index = ord($ransomNote[$i]) - ord('a');
-            if ($letterCount[$index] == 0) {
+    function isHappy($n) {
+        $seen = [];
+        while ($n != 1) {
+            if (isset($seen[$n])) {
                 return false;
             }
-            $letterCount[$index]--;
+            $seen[$n] = true;
+            $n = $this->sumOfSquares($n);
         }
 
         return true;
     }
+
+    private function sumOfSquares($n) {
+        $sum = 0;
+        while ($n > 0) {
+            $digit = $n % 10;
+            $sum += $digit * $digit;
+            $n = intdiv($n, 10);
+        }
+        return $sum;
+    }
 }
 
-
-
 $solution = new Solution();
-echo $solution->canConstruct("a", "b") ? "true" : "false";
+echo $solution->isHappy(19) ? "true" : "false";
 echo "<br>";
-echo $solution->canConstruct("aa", "ab") ? "true" : "false";
-echo "<br>";
-echo $solution->canConstruct("aa", "aab") ? "true" : "false";
+echo $solution->isHappy(2) ? "true" : "false";
