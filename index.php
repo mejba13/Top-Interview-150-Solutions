@@ -15,7 +15,7 @@ class solution {
         while ($x > 0) {
             $lastDigit = $x % 10;
             $reversed = $reversed *10 + $lastDigit;
-            $x = intval($x / 10);
+           echo  $x = intval($x / 10);
         }
 
         return $original === $reversed;
