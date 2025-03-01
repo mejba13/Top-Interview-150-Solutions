@@ -1,9 +1,7 @@
 <?php
+class Solution {
 
-class Solution
-{
-    function productExceptSelf($nums)
-    {
+    function productExceptSelf($nums) {
         $n = count($nums);
         $output = array_fill(0, $n, 1);
 
@@ -24,6 +22,5 @@ class Solution
 }
 
 $solution = new Solution();
-$nums = [1,2,3,4];
-$result = $solution->productExceptSelf($nums);
-print_r($result);
+print_r($solution->productExceptSelf([1,2,3,4]));
+print_r($solution->productExceptSelf([-1,1,0,-3,3];
