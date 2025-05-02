@@ -1,29 +1,28 @@
 from typing import List
 
 class Solution:
-    def majorityElement(self, nums: List[int]) -> int:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        left = 0
+        right = len(numbers) - 1
 
-        candidate = None
-        count = 0
+        while left < right:
+            current_sum = numbers[left] + numbers[right]
+            if current_sum == target:
+                return [left + 1, right + 1]  # Return 1-based indices
+            elif current_sum < target:
+                left += 1
+            else:
+                right -= 1
 
-        # Phase 1: Find a candidate
-        for num in nums:
-            if count == 0:
-                candidate = num
-            count += 1 if num == candidate else -1
-        return candidate
+        return []  # Just in case, though problem guarantees one solution
 
-# Instantiate the solution class
+# ----------- Input Example -----------
+numbers = [2, 7, 11, 15]
+target = 9
+
+# ----------- Function Call -----------
 solution = Solution()
+result = solution.twoSum(numbers, target)
 
-# Test cases
-test_cases = [
-    ([3, 2, 3], 3),  # Expected Output: 3
-    ([2, 2, 1, 1, 1, 2, 2], 2),  # Expected Output: 2
-    ([1], 1),  # Expected Output: 1
-]
-
-# Run the test cases
-for i, (nums, expected) in enumerate(test_cases, 1):
-    result = solution.majorityElement(nums)
-    print(f"Test Case {i}: {'Passed' if result == expected else 'Failed'}")
+# ----------- Output -----------
+print("Output:", result)  # Expected: [1, 2]
